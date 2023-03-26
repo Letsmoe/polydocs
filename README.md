@@ -1,8 +1,3 @@
----
-title: Introduction
-description: "PolyDocs Template built with Astro: Because One Language is Just Not Enough!"
----
-
 <p align="center">
 <img src="public/icon.svg" alt="PolyDocs Logo" width="300" />
 </p>
