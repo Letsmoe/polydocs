@@ -12,8 +12,6 @@
 		} else {
 			window.location.href = `/${language}${window.location.pathname}`;
 		}
-
-		
 	}
 </script>
 
