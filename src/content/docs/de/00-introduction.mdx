@@ -1,0 +1,68 @@
+---
+title: Einleitung
+slug: introduction
+description: "PolyDocs Documentation: Weil eine Sprache nicht schon schwer genug ist!"
+---
+
+
+<div class="flex justify-center mx-12">
+<img src="/icon.svg" alt="PolyDocs Logo" width="300" />
+</div>
+
+Herzlich Willkommen bei PolyDocs! Habt ihr es satt, Dokumentationsseiten zu
+erstellen, die nur für eine Sprache skalieren?
+
+Dann ist PolyDocs gerade richtig. Mit PolyDocs könnt ihr eure Dokumentation
+innerhalb weniger Minuten auf dutzende Sprachen erweitern. 
+
+Aber das ist noch nicht einmal alles, PolyDocs ist mit
+[Astro](https://astro.build) erstellt worden und bietet damit unzählige
+Konfigurations- und Anpassungsmöglichkeiten.
+Die Seiten können alle statisch generiert werden und sind damit extrem schnell!
+
+Außerdem könnt ihr mit [MDX](https://mdxjs.com/) eigene Komponenten erstellen
+und in eurer Dokumentation einbinden.
+
+## Konfiguration
+
+Um mit dieser Vorlage zu beginnen, müsst ihr einige Konfigurationsoptionen in
+der `astro.i18n.config.ts` festlegen. In dieser Datei könnt ihr alle Sprachen
+angeben, die ihr unterstützen wollt, sowie andere Einstellungen, die anzupassen sind.
+
+Um beispielsweise Französisch und Spanisch zu unterstützen,
+könnt ihr die folgenden Zeilen zur Datei `astro.i18n.config.ts` hinzufügen:
+
+```js
+export default {
+	defaultLangCode: "en",
+	supportedLangCodes: ["fr", "es"],
+	translations: {
+		en: (await import("./i18n/en/config.json")).default,
+		fr: (await import("./i18n/fr/config.json")).default,
+		es: (await import("./i18n/es/config.json")).default
+	}
+}
+```
+
+Außerdem können typische Einstellungen mithilfe der `config.json` Datei
+angepasst werden und alle Komponenten frei bearbeitet werden.
+
+Für mehr Info bezüglich Konfigurationsoptionen, schaut einfach mal beim
+[Konfigurationsguide](./configuration/header) vorbei.
+
+## Die Seite generieren
+
+Nachdem ihr eure Website konfiguriert habt, könnt ihr sie mit `pnpm run build`,
+`npm run build` oder `yarn build` generieren. Dieser Befehl erstellt alle
+statischen Seiten eurer Seite und gibt die Dateien ins `dist` Verzeichnis aus.
+Ihr könnt diese Dateien dann zu eurem Hosting provider hochladen.
+
+```bash
+pnpm run build
+npm run build
+yarn build
+```
+
+Das ist auch eigentlich schon alles, eure Dokumentation ist jetzt production
+ready. In der Navigation Bar könnt ihr einfach die Sprache wechseln und die
+Seite passt sich euren Bedürfnissen an.
