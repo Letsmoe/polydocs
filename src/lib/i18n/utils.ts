@@ -1,7 +1,7 @@
 import type { AstroGlobal } from "astro";
 import { config } from "./shared";
 import i18nConfig from "../../../astro.i18n.config";
-import { getLanguageFromURL } from "./getLanguage";
+import { getLanguageFromFilename } from "./getLanguage";
 
 type NestedKeyOf<T> = T extends object ? (
 	{ [K in keyof T & string]: 
@@ -29,8 +29,8 @@ export function t<T = (typeof i18nConfig["translations"]), L = keyof (typeof i18
 			"You must first call 'i18nInit' with AstroGlobal as a parameter."
 		);
 	}
-	let language = getLanguageFromURL(astro?.request.url) || defaultLangCode;
-	if (supportedLangCodes.indexOf(language) == -1) {
+	let language = getLanguageFromFilename(astro.request.url) || defaultLangCode;
+	if (supportedLangCodes.concat(defaultLangCode).indexOf(language) == -1) {
 		console.warn(
 			"Language not supported, reverting back to " + defaultLangCode
 		);

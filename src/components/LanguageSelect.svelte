@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { languageMap } from "../lib/i18n/languageMap";
 
-	let language: string = localStorage.getItem("language") || "";
+	export let language: string;
+
+	console.log(language)
 
 	function switchLanguage() {
-		localStorage.setItem("language", language)
-
 		let match = window.location.pathname.match(/\/(.*?)\//);
 		if (match && match[1] in languageMap) {
 			window.location.href = window.location.pathname.replace(/\/.*?\//, `/${language}/`);
