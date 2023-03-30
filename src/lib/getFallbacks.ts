@@ -25,7 +25,7 @@ export function getFallbacks(data: CollectionEntry<"docs">[]) {
 				.map(locale => ({
 					params: {
 						locale, // non-default locale, like `es`
-						slug: page.slug, // default slug, like `introduction`
+						slug: canonicalSlug, // default slug, like `introduction`
 					},
 					props: {
 						locale,

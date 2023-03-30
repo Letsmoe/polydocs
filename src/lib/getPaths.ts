@@ -16,7 +16,7 @@ export function getPaths(allData: CollectionEntry<"docs">[]) {
 		params: {
 			locale: locale,
 			// This is the translated version of the slug
-			slug: page.slug,
+			slug: canonicalSlug,
 		},
 
 		props: {

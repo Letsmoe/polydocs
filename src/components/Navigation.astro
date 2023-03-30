@@ -13,9 +13,12 @@ const docsArray = Object.values(docs)
 for (const article of docsArray) {
 	const property = article.data.section || "";
   sections[property] = sections[property] || [];
-	article.slug = `${lang}/${article.slug}` as CollectionEntry<"docs">["slug"];
+	article.slug = `${lang}/${article.canonicalSlug}` as CollectionEntry<"docs">["slug"];
   sections[property].push(article);
 }
+// We need to decode the uri for comparison when special characters might occur like ü or ä
+// otherwise they would be represented like this: "%3C"
+const uri = decodeURI(Astro.url.pathname);
 ---
 
 <label for="navigation" class="bg-white fixed bottom-0 right-0 z-50 flex items-center justify-center w-12 h-12 mb-4 mr-4 bg-secondary border rounded-full shadow-lg cursor-pointer text-slate-600 border-dark-blue lg:hidden transition duration-200 ease-in-out active:scale-95">
@@ -41,7 +44,7 @@ for (const article of docsArray) {
             <ul role="list" class="pl-3 mt-3">
               {
                 section[1].map((item) => (
-                  <li class={`py-1 pl-4 border-l-2 border-l-blue-100 ${("/" + item.slug) == Astro.url.pathname ? "bg-blue-200 border-l-blue-600" : ""}`}>
+                  <li class={`py-1 pl-4 border-l-2 border-l-blue-100 ${("/" + item.slug) == uri ? "bg-blue-200 border-l-blue-600" : ""}`}>
                     <a href={"/" + item.slug} class="text-slate-900 hover:text-slate-800">
                       {item.data.title}
                     </a>
