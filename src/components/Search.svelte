@@ -49,7 +49,7 @@
 <input
 	type="text"
 	on:input={handleSearch}
-	class="rounded-lg border px-3 py-1 outline-none focus:bg-slate-100 hover:bg-slate-50 transition-colors"
+	class="rounded-lg border px-3 py-1 outline-none focus:bg-slate-100 hover:bg-slate-50 transition-colors rounded-tr-none rounded-br-none"
 	placeholder="Search..."
 />
 
